@@ -17,6 +17,12 @@ const signEmail = document.querySelector(".email2");
 const signPassword = document.querySelector(".pass2");
 const confirmPassword = document.querySelector(".pass3");
 
+
+const changedUrl = ()=>{
+  window.location.replace("http://127.0.0.1:5500/public/home.html")
+  console.log("done");
+  
+}
 const createUser = (e) => {
   let email = signEmail.value;
   let password = signPassword.value;
@@ -55,6 +61,7 @@ const signInUser = (e) => {
       const errorMessage = error.message;
       console.log(errorMessage);
     });
+    setTimeout(changedUrl, 2000);
 };
 const googleUser =(e)=>{
   console.log("Google Sign-In Button Clicked");
@@ -66,8 +73,8 @@ const googleUser =(e)=>{
       const user = result.user;
       console.log(user);
       
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
+      setTimeout(changedUrl, 2000);
+
     }).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
