@@ -3,6 +3,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  GoogleAuthProvider ,
+  signInWithPopup
 } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
 const firebaseConfig = {
   apiKey: "AIzaSyDGPrv_q7X3CeQnE0Jc9z1Mmwd_534md7Q",
@@ -16,10 +18,14 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
 export {
   app,
   auth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  GoogleAuthProvider ,
+  provider,
+  signInWithPopup
 };
