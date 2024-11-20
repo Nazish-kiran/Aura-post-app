@@ -1,5 +1,48 @@
+@font-face {
+  font-family: commutersansRegular;
+  src: url(fonts/Fontspring-DEMO-commuterssans-regular.otf);
+  font-display: swap;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: var(--font-1);
+}
+:root {
+  --theme-color: #d0debb;
+  --theme-hover: #a9b893;
+  --link-color: #556b2f;
+  --link-hover: #374c1a;
+  --font-1: commutersansRegular;
+}
+nav {
+  border-bottom: 3px solid rgba(138, 138, 138, 0.5);
+}
+.logo {
+  width: 5%;
+}
+.nav-btn {
+  background-color: var(--theme-color) !important;
+}
+.nav-btn:hover {
+  background-color: var(--theme-hover) !important;
+}
+aside {
+  border-right: 3px solid rgba(138, 138, 138, 0.5);
+  padding: 30px 150px 20px 20px !important;
+}
+.aside-list {
+padding-left: 0px !important;
+  a {
+    text-decoration: none !important;
+    li {
+      list-style: none;
+      color: #121212;
+      padding-bottom: 10px;
+    }
+  }
+}
+.content {
+  margin-left: 20%;
 }
