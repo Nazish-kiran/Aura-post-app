@@ -29,5 +29,5 @@ export {
   GoogleAuthProvider ,
   provider,
   signInWithPopup,
-  onAuthStateChanged
+  onAuthStateChanged,
 };

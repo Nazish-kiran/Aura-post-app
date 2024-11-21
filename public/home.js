@@ -1,6 +1,6 @@
-import { auth, onAuthStateChanged } from "app.js";
+import { auth, onAuthStateChanged } from "./firebase.js";
 
-onAuthStateChanged( (user)=> {
+onAuthStateChanged(auth , (user)=> {
     console.log(user);
     
   if (user) {
