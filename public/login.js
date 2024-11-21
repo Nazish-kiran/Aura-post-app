@@ -5,7 +5,7 @@ const signupBtn = document.querySelector("label.signup");
 const signupLink = document.querySelector("form .signup-link a");
 const loginLink = document.querySelector("form .login-link a");
 
-if (window.location.href == "http://127.0.0.1:5500/public/") {
+if (window.location.href == "https://aura-posting-web.web.app/") {
   signupBtn.onclick = () => {
     loginForm.style.marginLeft = "-50%";
     loginText.style.marginLeft = "-50%";

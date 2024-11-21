@@ -18,9 +18,9 @@ const signEmail = document.querySelector(".email2");
 const signPassword = document.querySelector(".pass2");
 const confirmPassword = document.querySelector(".pass3");
 
-if (window.location.href == "http://127.0.0.1:5500/public/index.html") {
+if (window.location.href == "https://aura-posting-web.web.app/") {
   const changedUrl = () => {
-    window.location.replace("http://127.0.0.1:5500/public/home.html");
+    window.location.replace("https://aura-posting-web.web.app/home.html");
     console.log("done");
   };
   const createUser = (e) => {
@@ -110,7 +110,7 @@ if (window.location.href == "http://127.0.0.1:5500/public/index.html") {
       // ...
     }
   });
-} else if (window.location.href == "http://127.0.0.1:5500/public/home.html") {
+} else if (window.location.href == "https://aura-posting-web.web.app/home.html") {
   var profilePicture = document.querySelector(".profile-pict");
   const user = JSON.parse(localStorage.getItem("user"));
   console.log(user.name, user.picture);
