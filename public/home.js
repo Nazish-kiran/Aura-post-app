@@ -9,6 +9,6 @@ onAuthStateChanged(auth , (user)=> {
     displayName.innerHTML = user.displayName || "Anonymous"; 
     profilePicture.src = user.photoURL || "default-pic.jpg";
   } else {   
-    window.location.href = "login.html";
+    // window.location.href = " https://aura-posting-web.web.app";
   }
 });
