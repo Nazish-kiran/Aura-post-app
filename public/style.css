@@ -79,3 +79,8 @@ aside {
 .content {
   margin-left: 220px;
 }
+.logOut-btn{
+color: #fff !important;
+background-color: #db0303 !important;
+/* margin: auto !important; */
+}
