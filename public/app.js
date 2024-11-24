@@ -19,7 +19,7 @@ const signPassword = document.querySelector(".pass2");
 const confirmPassword = document.querySelector(".pass3");
 
 const changedUrl = () => {
-  window.location.replace("https://aura-posting-web.web.app/home.html");
+  // window.location.replace("https://aura-posting-web.web.app/home.html");
   console.log("done");
 };
 const createUser = (e) => {
