@@ -1,14 +1,17 @@
 import { auth, onAuthStateChanged } from "./firebase.js";
+const userLocal  = JSON.parse(localStorage.getItem("userl"))
+console.log(userLocal);
+
 
 onAuthStateChanged(auth , (user)=> {
     console.log(user);
     
-  if (user) {
+  if (userLocal || user) {
     const profilePicture = document.querySelector(".profile-pict");
     const displayName = document.querySelector(".dp-name-p");
-    displayName.innerHTML = user.displayName || "Anonymous"; 
+    displayName.innerHTML = userLocal.name || "Anonymous"; 
     profilePicture.src = user.photoURL || "default-pic.jpg";
   } else {   
-    window.location.href = " https://aura-posting-web.web.app";
+    window.location.href = "https://aura-posting-web.web.app";
   }
 });

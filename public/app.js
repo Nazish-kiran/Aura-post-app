@@ -53,7 +53,7 @@ const signInUser = (e) => {
 
       console.log("exist");
       localStorage.setItem(
-        "user",
+        "userl",
         JSON.stringify({ email: user.email, id: user.uid })
       );
     })
@@ -74,7 +74,7 @@ const googleUser = (e) => {
       const user = result.user;
       console.log(user);
       localStorage.setItem(
-        "user",
+        "userl",
         JSON.stringify({
           email: user.email,
           id: user.uid,
@@ -97,7 +97,7 @@ submittBtn.addEventListener("click", signInUser);
 signBtn.addEventListener("click", createUser);
 googleBtn.addEventListener("click", googleUser);
 onAuthStateChanged(auth, (user) => {
-  if (user) {
+  if (user && userl) {
     setTimeout(changedUrl, 2000);
     const uid = user.uid;
   } else {   

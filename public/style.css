@@ -35,6 +35,10 @@ aside {
   width: 220px;
   height: 100vh !important;
 }
+.main{
+  margin-left: 250px;
+
+}
 .profile-pic {
   width: 80px;
 }
@@ -79,8 +83,22 @@ aside {
 .content {
   margin-left: 220px;
 }
+/* Profile Section Styling */
 .logOut-btn{
 color: #fff !important;
 background-color: #db0303 !important;
 /* margin: auto !important; */
+}
+.profile-frame{
+  width: 250px;
+  height: 250px;
+}
+.main{
+  padding-top: 60px;
+}
+.change-name{
+  font-size: 20px;
+}
+.chnage-name-btn{
+  background-color: var(--theme-color) !important;
 }

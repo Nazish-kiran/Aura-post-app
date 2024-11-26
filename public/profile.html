@@ -12,9 +12,112 @@
       crossorigin="anonymous"
     />
 </head>
-<body>
-    <h1>Profile Page</h1>
-    <button class="btn logOut-btn rounded-2 px-4 py-3 fw-bold">Log Out</button>
+<body class="">
+    <nav class="navbar d-flex px-5 py-2">
+      <div class="logo">
+        <img src="images/logo.jpg" alt="logo" class="img-fluid logo-img" width="50px" height="50px" />
+      </div>
+    </nav>
+    <div class="banner">
+      <aside class="position-fixed">
+        <div class="profile">
+          <div class="profile-pic me-5">
+            <img
+              src="images/anonymous.png"
+              alt="profile picture"
+              class="profile-pict rounded-circle"
+            />
+          </div>
+          <div class="dp-name">
+            <p class="dp-name-p">Anonymous</p>
+          </div>
+        </div>
+        <ul class="aside-list">
+          <a href="#">
+            <li aria-current="page">
+              <div class="menu-icon">
+                <img
+                  src="images/icons8-home.svg"
+                  alt=""
+                  class="menu-icon-img"
+                />
+              </div>
+              Home
+            </li> </a
+          ><a href="#">
+            <li>
+              <div class="menu-icon">
+                <img
+                  src="images/icons8-explore-30 (1).png"
+                  alt=""
+                  class="menu-icon-img"
+                />
+              </div>
+              Explore
+            </li> </a
+          ><a href="#">
+            <li>
+              <div class="menu-icon">
+                <img
+                  src="images/icons8-messages.svg"
+                  alt=""
+                  class="menu-icon-img"
+                />
+              </div>
+              Messages
+            </li> </a
+          ><a href="#">
+            <li>
+              <div class="menu-icon">
+                <img
+                  src="images/icons8-reels.svg"
+                  alt=""
+                  class="menu-icon-img"
+                />
+              </div>
+              Reels
+            </li> </a
+          ><a href="profile.html">
+            <li>
+              <div class="menu-icon">
+                <img
+                  src="images/icons8-male-user-48.png"
+                  alt=""
+                  class="menu-icon-img profile-pic rounded-circle"
+                />
+              </div>
+              Profile
+            </li> </a
+          ><a href="#">
+            <li>
+              <div class="menu-icon">
+                <img
+                  src="images/icons8-image-24.png"
+                  alt=""
+                  class="menu-icon-img"
+                />
+              </div>
+              My Posts
+            </li>
+          </a>
+        </ul>
+      </aside>
+      <div class="main d-flex align-items-center flex-column gap-4 ">
+      <div class="profile-frame rounded-circle border border-4 mx-auto">
+        <img
+        src="images/anonymous.png"
+        alt="profile picture"
+        class="profile-pict rounded-circle w-100 h-100"
+      />
+      </div>
+      <div class="d-flex">
+
+        <input type="text" name="" id="" class="change-name dp-name-new border border-0 ps-2 py-1" value="Anonymous">
+        <button class="btn chnage-name-btn rounded-2 px-3 py-2 fw-bold">Change Name</button>
+      </div>
+
+        <button class="btn logOut-btn rounded-2 px-4 py-3 fw-bold">Log Out</button>
+      </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
