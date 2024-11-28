@@ -73,15 +73,17 @@ const googleUser = (e) => {
       const token = credential.accessToken;
       const user = result.user;
       console.log(user);
-      localStorage.setItem(
-        "userl",
-        JSON.stringify({
-          email: user.email,
-          id: user.uid,
-          name: user.displayName,
-          picture: user.photoURL,
-        })
-      );
+      if (!localStorage.getItem("userl")) {
+        localStorage.setItem(
+          "userl",
+          JSON.stringify({
+            email: user.email,
+            id: user.uid,
+            name: user.displayName,
+            picture: user.photoURL,
+          })
+        );
+      }
       console.log(user);
 
       setTimeout(changedUrl, 2000);
@@ -96,15 +98,14 @@ const googleUser = (e) => {
 submittBtn.addEventListener("click", signInUser);
 signBtn.addEventListener("click", createUser);
 googleBtn.addEventListener("click", googleUser);
+
+const userLocal = JSON.parse(localStorage.getItem("userl"));
 onAuthStateChanged(auth, (user) => {
-  if (user && userl) {
+  if (user && userLocal) {
     setTimeout(changedUrl, 2000);
     const uid = user.uid;
-  } else {   
+  } else {
   }
 });
-
-
-
 
 export { auth, onAuthStateChanged };

@@ -1,17 +1,21 @@
 import { auth, onAuthStateChanged } from "./firebase.js";
-const userLocal  = JSON.parse(localStorage.getItem("userl"))
+const userLocal = JSON.parse(localStorage.getItem("userl"));
 console.log(userLocal);
 
+onAuthStateChanged(auth, (user) => {
+  console.log(user);
 
-onAuthStateChanged(auth , (user)=> {
-    console.log(user);
-    
   if (userLocal || user) {
     const profilePicture = document.querySelector(".profile-pict");
     const displayName = document.querySelector(".dp-name-p");
-    displayName.innerHTML = userLocal.name || "Anonymous"; 
+    window.addEventListener("load", () => {
+      if (userLocal.name) {
+        displayName.innerHTML =
+          userLocal.name || user.displayName || "Anonymous";
+      }
+    });
     profilePicture.src = user.photoURL || "default-pic.jpg";
-  } else {   
+  } else {
     window.location.href = "https://aura-posting-web.web.app";
   }
 });
