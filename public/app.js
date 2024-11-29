@@ -1,136 +1,121 @@
 import {
+  app,
+  auth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
+  provider,
   signInWithPopup,
   onAuthStateChanged,
 } from "./firebase.js";
 
+const submittBtn = document.querySelector(".btn1");
+const signBtn = document.querySelector(".btn2");
+const googleBtn = document.querySelector(".btn3");
+const useremail = document.querySelector(".email");
+const userpassword = document.querySelector(".password");
+const signEmail = document.querySelector(".email2");
+const signPassword = document.querySelector(".pass2");
+const confirmPassword = document.querySelector(".pass3");
 const toast = document.getElementById("snackbar");
 
-// Function to show a toast message
-const showToast = (message) => {
-  toast.innerText = message;
-  toast.className = "show";
-  setTimeout(() => {
-    toast.className = toast.className.replace("show", "");
-  }, 3000);
-};
-
-// Function to save data to localStorage
-const saveToLocalStorage = (key, data) => {
-  localStorage.setItem(key, JSON.stringify(data));
-};
-
-// Function to retrieve data from localStorage
-const getFromLocalStorage = (key) => {
-  return JSON.parse(localStorage.getItem(key));
-};
-
-// Function to change the URL (or navigate)
 const changedUrl = () => {
-  console.log("Navigation triggered");
-  // Uncomment the next line for actual navigation
-  window.location.replace("https://aura-posting-web.web.app/home.html");
+  // window.location.replace("https://aura-posting-web.web.app/home.html");
+  console.log("done");
 };
-
-// Function to handle user registration
-const createUser = async () => {
-  const email = document.querySelector(".email2").value;
-  const password = document.querySelector(".pass2").value;
-  const confirmPassword = document.querySelector(".pass3").value;
-
-  if (password !== confirmPassword) {
-    showToast("Passwords don't match");
-    return;
-  }
-
-  try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const user = userCredential.user;
-
-    // Save user to localStorage
-    saveToLocalStorage("user", { email: user.email, id: user.uid });
-
-    console.log(user);
-    showToast("User created successfully!");
-
-    // Redirect to new URL
-    setTimeout(changedUrl, 2000);
-  } catch (error) {
-    showToast(error.message);
+const createUser = (e) => {
+  let email = signEmail.value;
+  let password = signPassword.value;
+  let confPassword = confirmPassword.value;
+  if (password == confPassword) {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        toast.innerText = error.message;
+        toast.className = "show";
+        setTimeout(function () {
+          toast.className = toast.className.replace("show", "");
+        }, 3000);
+        console.log(errorMessage);
+      });
+  } else {
+    alert("passwords dont match");
   }
 };
+const signInUser = (e) => {
+  let email = useremail.value;
+  let password = userpassword.value;
 
-// Function to handle user login
-const signInUser = async () => {
-  const email = document.querySelector(".email").value;
-  const password = document.querySelector(".password").value;
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log(user);
 
-  try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const user = userCredential.user;
+      console.log("exist");
+      localStorage.setItem(
+        "userl",
+        JSON.stringify({ email: user.email, id: user.uid })
+      );
+    })
+    .catch((error) => {
+      console.log(error.message);
 
-    // Save user to localStorage
-    saveToLocalStorage("user", { email: user.email, id: user.uid });
-
-    console.log(user);
-    showToast("Signed in successfully!");
-
-    // Redirect to new URL
-    setTimeout(changedUrl, 2000);
-  } catch (error) {
-    showToast(error.message);
-  }
-};
-
-// Function to handle Google Sign-In
-const googleUser = async (e) => {
-  e.preventDefault();
-  try {
-    const result = await signInWithPopup(auth, new GoogleAuthProvider());
-    const user = result.user;
-
-    // Save user to localStorage
-    saveToLocalStorage("user", {
-      email: user.email,
-      id: user.uid,
-      name: user.displayName,
-      picture: user.photoURL,
+      toast.innerText = error.message;
+      toast.className = "show";
+      setTimeout(function () {
+        toast.className = toast.className.replace("show", "");
+      }, 3000);
+      console.log(errorMessage);
     });
-
-    console.log(user);
-    showToast("Google Sign-In successful!");
-
-    // Redirect to new URL
-    setTimeout(changedUrl, 2000);
-  } catch (error) {
-    showToast(error.message);
-  }
+  setTimeout(changedUrl, 2000);
 };
+const googleUser = (e) => {
+  console.log("Google Sign-In Button Clicked");
+  e.preventDefault();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+      console.log(user);
+      if (!localStorage.getItem("userl")) {
+        localStorage.setItem(
+          "userl",
+          JSON.stringify({
+            email: user.email,
+            id: user.uid,
+            name: user.displayName,
+            picture: user.photoURL,
+          })
+        );
+      }
+      console.log(user);
 
-// Add event listeners to buttons
-document.querySelector(".btn1").addEventListener("click", signInUser);
-document.querySelector(".btn2").addEventListener("click", createUser);
-document.querySelector(".btn3").addEventListener("click", googleUser);
+      setTimeout(changedUrl, 2000);
+    })
+    .catch((error) => {
+      toast.innerText = error.message;
+      toast.className = "show";
+      setTimeout(function () {
+        toast.className = toast.className.replace("show", "");
+      }, 3000);
+    });
+};
+submittBtn.addEventListener("click", signInUser);
+signBtn.addEventListener("click", createUser);
+googleBtn.addEventListener("click", googleUser);
 
-// Check for authenticated user and localStorage data
+const userLocal = JSON.parse(localStorage.getItem("userl"));
 onAuthStateChanged(auth, (user) => {
-  const localUser = getFromLocalStorage("user");
-
-  if (user && localUser) {
-    console.log("User logged in:", user.uid);
-    console.log("Local Storage Data:", localUser);
-
-    // Redirect to new URL
+  if (user && userLocal) {
     setTimeout(changedUrl, 2000);
+    const uid = user.uid;
+  } else {
   }
 });
+
+export { auth, onAuthStateChanged };
