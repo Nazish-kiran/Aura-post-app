@@ -33,7 +33,7 @@ const createBlogCard = (blog, docId) => {
     </div>
   ` : `
     <div class="d-flex align-items-center mb-3">
-      <img src="images/anonymous.png" alt="User Avatar" class="rounded-circle" width="30" height="30">
+      <img src="images/anonymous.png" alt="User Avatar" class="rounded-circle" width="25" height="25">
       <span class="ms-2">Anonymous</span>
     </div>
   `;
@@ -47,12 +47,12 @@ const createBlogCard = (blog, docId) => {
   ` : '';
 
   blogCard.innerHTML = `
-    <div class="card shadow-sm h-100">
+    <div class="card h-100 border border-0">
       <div class="card-body">
         ${userInfo}
         ${authorIcon}
         <h5 class="card-title">${blog.title}</h5>
-        <p class="card-text text-muted">${new Date(blog.timestamp).toLocaleDateString()}</p>
+        <p class="card-text card-date">${new Date(blog.timestamp).toLocaleDateString()}</p>
         <p class="card-text">${blog.content.length > 150 ? blog.content.substring(0, 150) + '...' : blog.content}</p>
       </div>
     </div>

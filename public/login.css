@@ -219,7 +219,6 @@ form .btn input[type="submit"] {
 .google-layer {
   border: 1px solid black;
 }
-
 /* Toast */
 #snackbar {
   visibility: hidden;
