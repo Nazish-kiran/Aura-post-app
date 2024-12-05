@@ -107,6 +107,29 @@ form input {
   background-color: var(--theme-color) !important;
   color: white !important;
 }
+.logo{
+  background-color: var(--theme-color);
+  width: 25px;
+  height: 25px;
+  border-radius:50% ;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  -webkit-border-radius:50% ;
+  -moz-border-radius:50% ;
+  -ms-border-radius:50% ;
+  -o-border-radius:50% ;
+}
+.logo-inner{
+  background-color: #779DFF;
+  width: 15px;
+  height: 15px;
+  border-radius:50% ;
+  -webkit-border-radius:50% ;
+  -moz-border-radius:50% ;
+  -ms-border-radius:50% ;
+  -o-border-radius:50% ;
+}
 /* Toast */
 #snackbar {
   visibility: hidden;
